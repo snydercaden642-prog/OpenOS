@@ -1,0 +1,9 @@
+; A very simple bootloader that loops forever
+[bits 16]         ; Use 16-bit mode
+[org 0x7c00]      ; Standard memory location for bootloaders
+
+start:
+    jmp $         ; Jump to the current address (infinite loop)
+
+times 510-($-$$) db 0  ; Fill the rest of the 512 bytes with zeros
+dw 0xaa55              ; The "Magic Number" that tells the BIOS this is bootable
